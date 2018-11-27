@@ -15,7 +15,7 @@ public class SpringBeanFactoryApp {
         Resource resource = new ClassPathResource("beans.xml");
         reader.loadBeanDefinitions(resource);
 
-        Footer footer = (Footer) beanFactory.getBean("footer", Footer.class);
+        Footer footer = beanFactory.getBean("footer", Footer.class);
         System.out.println(footer.getSignature());
     }
 }
