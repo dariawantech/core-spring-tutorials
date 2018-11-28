@@ -1,0 +1,30 @@
+package com.dariawan.app;
+
+import com.dariawan.bean.Footer;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
+
+public class SpringSingletonBeanApp {
+
+    public static void main(String[] args) {
+        ApplicationContext appContext = new ClassPathXmlApplicationContext("beans-singleton.xml");
+
+        Footer footer1 = appContext.getBean("footer", Footer.class);
+        footer1.setSignature("Just another Java programmer");
+        System.out.println(footer1.getSignature());
+        
+        Footer footer2 = appContext.getBean("footer", Footer.class);
+        System.out.println(footer2.getSignature());
+        
+        footer2.setSignature("Hello world! @Dariawan");
+        System.out.println(footer1.getSignature());        
+    }
+}
+
+/* 
+Output:
+------    
+Just another Java programmer
+Just another Java programmer
+Hello world! @Dariawan
+*/
